@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App"
 import { createGlobalStyle } from "styled-components"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 const GlobalStyle = createGlobalStyle`
   /* :root {
@@ -26,9 +27,21 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>
+  },
+  {
+    path: "/newCard",
+    element: <p>sos</p>
+  }
+])
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <GlobalStyle />
-    <App />
+    <RouterProvider router={router} />
+      <GlobalStyle />
+      <App />
   </React.StrictMode>
 )
