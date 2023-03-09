@@ -1,25 +1,54 @@
-import './App.css'
-import * as cardService from "../services/cardService.js"
-import { useEffect } from 'react'
+import { useEffect, useState } from "react"
+import styled from "styled-components"
+import Card from "./components/Card.jsx"
+import cardService from "./services/cardService.js"
+
+const Title = styled.h1`
+  margin-bottom: 1rem;
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  /* margin: auto; */
+  height: 99vh;
+`
+
+const TitleContainer = styled.div`
+  flex: 0 1;
+  /* border:2px solid red ; */
+`
+
+const BottomContainer = styled.div`
+  flex: 1;
+  /* border: 2px solid red; */
+`
 
 function App() {
-
-useEffect(() => {
-  try {
+  const [cards, setCards] = useState([""])
+  
+  useEffect(() => {
     cardService.getAll()
-      .then((test) => console.log(test))
-  } catch (error) {
-    console.log(error)
-  }
-}, [])
+      .then(cards => {
+        const shuffledCards = cards.sort((a,b) => 0.5 - Math.random())
+        setCards(shuffledCards)
+      })
+  }, [])
 
   return (
-    <div>
-      <h1>TillinTallin</h1>
-      <br/>
-      Oispa kaljaa
-    </div>
+    <>
+      <Container>
+        <TitleContainer>
+          <Title>Tillin Tallin</Title>
+          <div>Oispa kaljaa</div>
+        </TitleContainer>
+
+        <BottomContainer>
+          <Card cards={cards}/>
+        </BottomContainer>
+      </Container>
+    </>
   )
 }
-
 export default App
