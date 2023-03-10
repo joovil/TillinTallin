@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -40,22 +41,32 @@ const CardContent = styled.div`
   font-size: 24px;
 `
 
-const nextCard = () => {
-  console.log("testing")
-}
 
-function Card({ cards }) {
-  
-  const randomNumber = (arraySize) => {
-    return Math.floor(Math.random() * cards.length)
+function Card({ cards, setCards }) {
+  // const randomNumber = () => {
+  //   return Math.floor(Math.random() * cards.length)
+  // }
+  const [cardId, setCardId] = useState(0)
+
+
+  console.log(cards)
+  const nextCard = () => {
+    if (cardId !== cards.length)
+      setCardId(prev => prev + 1)
   }
+  
+  
   return (
     <Container>
       <InnerContainer>
-        <CardContent onClick={nextCard}>{cards[randomNumber()].content}</CardContent>
+        <CardContent onClick={nextCard}>
+          {cards.length === cardId 
+          ? <div>Kortit loppuivat</div>
+          : <div>{cards[cardId].content}</div>
+          }
+        </CardContent>
       </InnerContainer>
     </Container>
   )
 }
-
 export default Card
