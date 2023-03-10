@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build --emptyOutDir",
+    "preview": "vite preview",
+    "deploy": "vite build&&cd ../server&&flyctl deploy"
   },
   "dependencies": {
     "axios": "^1.3.4",

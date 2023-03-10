@@ -4,7 +4,7 @@ const Card = require("../models/card.js")
 const cardRouter = (fastify, options, done) => {
   fastify.get("/api/cards", async (req, res) => {
     const allCards = await Card.find({})
-    console.log(allCards)
+    // console.log(allCards)
 
     res.header("Access-Control-Allow-Origin", "*")
     res.send(allCards)
@@ -23,7 +23,7 @@ const cardRouter = (fastify, options, done) => {
     
     try {
       const createdCard = await cardToBeCreated.save()
-      console.log(createdCard)
+      // console.log(createdCard)
       return res.code(201).send(createdCard)
     } catch (e) {
       console.log(e.data.error)

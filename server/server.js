@@ -17,7 +17,7 @@ mongoose
 const server = Fastify({
   logger: true,
 })
-console.log(path.join(__dirname, "dist"))
+//console.log(path.join(__dirname, "dist"))
 server.register(require("@fastify/static"), {
   root: path.join(__dirname, "dist")
 })

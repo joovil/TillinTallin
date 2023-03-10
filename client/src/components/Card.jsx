@@ -49,7 +49,7 @@ function Card({ cards, setCards }) {
   const [cardId, setCardId] = useState(0)
 
 
-  console.log(cards)
+  // console.log(cards)
   const nextCard = () => {
     if (cardId !== cards.length)
       setCardId(prev => prev + 1)

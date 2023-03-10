@@ -12,7 +12,7 @@ const Container = styled.div`
   display: flex;
   flex-flow: column;
   text-align: center;
-  height: 99vh;
+  height: 90vh;
 `
 
 const TitleContainer = styled.div`
