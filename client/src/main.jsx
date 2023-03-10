@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App"
+import NewCardForm from "./components/NewCardForm.jsx"
 import { createGlobalStyle } from "styled-components"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/newCard",
-    element: <p>sos</p>
+    element: <NewCardForm />
   }
 ])
 
@@ -42,6 +43,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
       <GlobalStyle />
-      <App />
   </React.StrictMode>
 )

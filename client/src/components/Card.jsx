@@ -49,7 +49,6 @@ function Card({ cards }) {
   const randomNumber = (arraySize) => {
     return Math.floor(Math.random() * cards.length)
   }
-
   return (
     <Container>
       <InnerContainer>

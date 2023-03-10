@@ -13,22 +13,20 @@ const cardRouter = (fastify, options, done) => {
   fastify.post("/api/cards", async (req, res) => {
     const { content, language } = req.body
     
-    console.log(content, language)
-    const testCard = new Card({
+    const cardToBeCreated = new Card({
       content: content,
       language: language
     })
-
-    const duplicate = await Card.findOne({ content: cardContent })
-    console.log(duplicate)
-
+    // Check if card with content already exists
+    const duplicate = await Card.findOne({ content: content })
     if (duplicate) return res.code(400).send({ error: "Card already exists" })
-
+    
     try {
-      await testCard.save()
-      return res.code(200).send({ message: "Card created successfully" })
+      const createdCard = await cardToBeCreated.save()
+      console.log(createdCard)
+      return res.code(201).send(createdCard)
     } catch (e) {
-      console.log(e)
+      console.log(e.data.error)
       return res.code(400).send({ error: "Card creation error" })
     }
   })
